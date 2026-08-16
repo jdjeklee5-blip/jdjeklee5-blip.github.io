@@ -7,7 +7,7 @@ export default function AboutPage() {
         <header className="about__header">
           <span className="about__avatar" aria-hidden="true">J</span>
           <div>
-            <h1 className="about__name">jamin</h1>
+            <h1 className="about__name">jina</h1>
             <p className="about__bio">나의 소소한 기록들을 남기는 공간</p>
           </div>
         </header>
@@ -22,7 +22,7 @@ export default function AboutPage() {
               </svg>
               <div>
                 <span className="about__channel-name">Email</span>
-                <span className="about__channel-desc">rudals9901@naver.com</span>
+                <span className="about__channel-desc">jdjeklee@naver.com</span>
               </div>
             </div>
           </div>
