@@ -1,1 +1,273 @@
-[]
+[
+  {
+    "slug": "scm-basics",
+    "category": "공부",
+    "subcategory": "scm",
+    "subcategoryLabel": "SCM",
+    "title": "생산관리에서 SCM까지, 하나의 흐름으로 정리하기",
+    "date": "2026-08-16",
+    "tags": [
+      "scm",
+      "supply-chain",
+      "mrp",
+      "erp",
+      "jit"
+    ],
+    "summary": "MPS·BOM·MRP·JIT·ERP를 따로 외우지 않고 수요에서 공급까지 한 줄로 꿰어보기",
+    "draft": false,
+    "private": false,
+    "readingTime": 16,
+    "cover": "./images/cover-scm-basics.svg",
+    "order": 1,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/scm-basics"
+  },
+  {
+    "slug": "sql-basics",
+    "category": "공부",
+    "subcategory": "sql-data",
+    "subcategoryLabel": "SQL / Data",
+    "title": "SELECT 문의 순서와 자주 쓰는 함수들",
+    "date": "2026-08-16",
+    "tags": [
+      "sql",
+      "mysql",
+      "data"
+    ],
+    "summary": "절을 쓰는 순서와 실행되는 순서는 다르다 — COUNT·CONCAT·ROUND·IFNULL까지",
+    "draft": false,
+    "private": false,
+    "readingTime": 11,
+    "cover": "./images/cover-sql-basics.svg",
+    "order": 2,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/sql-basics"
+  },
+  {
+    "slug": "beauty-market-structure",
+    "category": "기업-산업분석",
+    "subcategory": "beauty",
+    "subcategoryLabel": "Beauty",
+    "title": "뷰티 시장 구조 훑어보기",
+    "date": "2026-08-16",
+    "tags": [
+      "뷰티",
+      "beauty"
+    ],
+    "summary": "브랜드사·제조사(ODM)·유통사가 각각 무엇을 가져가나",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "./images/cover-industry.svg",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/beauty-market-structure"
+  },
+  {
+    "slug": "toodak-01-intro",
+    "category": "프로젝트",
+    "subcategory": "toodak",
+    "subcategoryLabel": "Toodak",
+    "title": "Toodak - 프로젝트 소개",
+    "date": "2026-08-16",
+    "tags": [
+      "toodak"
+    ],
+    "summary": "무엇을 만들었고 왜 시작했나",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "./images/cover-project.svg",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/toodak-01-intro"
+  },
+  {
+    "slug": "beauty-odm",
+    "category": "기업-산업분석",
+    "subcategory": "beauty",
+    "subcategoryLabel": "Beauty",
+    "title": "뷰티 ODM 구조와 진입 장벽",
+    "date": "2026-08-15",
+    "tags": [
+      "뷰티",
+      "화장품"
+    ],
+    "summary": "왜 브랜드는 늘어나는데 제조사는 몇 곳뿐인가",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/beauty-odm"
+  },
+  {
+    "slug": "toodak-02-architecture",
+    "category": "프로젝트",
+    "subcategory": "toodak",
+    "subcategoryLabel": "Toodak",
+    "title": "Toodak - 구조 설계",
+    "date": "2026-08-15",
+    "tags": [
+      "toodak"
+    ],
+    "summary": "어떤 구조로 나눴고 무엇을 포기했나",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/toodak-02-architecture"
+  },
+  {
+    "slug": "logistics-last-mile",
+    "category": "공부",
+    "subcategory": "logistics",
+    "subcategoryLabel": "유통·물류",
+    "title": "라스트마일 비용 구조",
+    "date": "2026-08-14",
+    "tags": [
+      "물류",
+      "logistics"
+    ],
+    "summary": "전체 배송비에서 마지막 구간이 차지하는 비중",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/logistics-last-mile"
+  },
+  {
+    "slug": "toodak-03-retrospective",
+    "category": "프로젝트",
+    "subcategory": "toodak",
+    "subcategoryLabel": "Toodak",
+    "title": "Toodak - 회고",
+    "date": "2026-08-14",
+    "tags": [
+      "toodak"
+    ],
+    "summary": "다시 만든다면 무엇을 바꿀까",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/toodak-03-retrospective"
+  },
+  {
+    "slug": "logistics-channel",
+    "category": "공부",
+    "subcategory": "logistics",
+    "subcategoryLabel": "유통·물류",
+    "title": "유통 채널 구조 정리",
+    "date": "2026-08-13",
+    "tags": [
+      "유통",
+      "distribution"
+    ],
+    "summary": "제조 → 도매 → 소매 사이에 누가 끼는가",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/logistics-channel"
+  },
+  {
+    "slug": "scm-01-intro",
+    "category": "프로젝트",
+    "subcategory": "scm",
+    "subcategoryLabel": "SCM",
+    "title": "SCM - 프로젝트 소개",
+    "date": "2026-08-13",
+    "tags": [
+      "scm"
+    ],
+    "summary": "무엇을 만들었고 왜 시작했나",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/scm-01-intro"
+  },
+  {
+    "slug": "erp-modules",
+    "category": "공부",
+    "subcategory": "erp",
+    "subcategoryLabel": "ERP",
+    "title": "ERP 모듈 구성 훑어보기",
+    "date": "2026-08-12",
+    "tags": [
+      "erp"
+    ],
+    "summary": "재무·구매·생산·판매 모듈이 어디서 맞물리나",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/erp-modules"
+  },
+  {
+    "slug": "scm-02-notes",
+    "category": "프로젝트",
+    "subcategory": "scm",
+    "subcategoryLabel": "SCM",
+    "title": "SCM - 작업 기록",
+    "date": "2026-08-12",
+    "tags": [
+      "scm"
+    ],
+    "summary": "진행하면서 막혔던 지점들",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/scm-02-notes"
+  },
+  {
+    "slug": "erp-master-data",
+    "category": "공부",
+    "subcategory": "erp",
+    "subcategoryLabel": "ERP",
+    "title": "마스터 데이터가 꼬이면 생기는 일",
+    "date": "2026-08-11",
+    "tags": [
+      "erp",
+      "sap"
+    ],
+    "summary": "코드 체계를 먼저 잡아야 하는 이유",
+    "draft": true,
+    "private": false,
+    "readingTime": 1,
+    "cover": "",
+    "order": 0,
+    "series": "",
+    "seriesOrder": 0,
+    "path": "/posts/erp-master-data"
+  }
+]
