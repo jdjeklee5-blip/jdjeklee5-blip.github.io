@@ -43,7 +43,7 @@ CLAUDE.md에 적힌 `frontend-design` 원칙대로, 모든 AI 생성물이 수�
 | 셸 | 왼쪽 260px sticky 사이드바(프로필·카테고리 트리·테마 토글) + 오른쪽 메인. `<1024px`에선 사이드바 숨기고 top bar로 대체 |
 | 홈 구조 | `01 최신 글`(1 히어로 + 3 side, SplitLatest) → `02 카테고리`(CategoryGrid) → `03 카테고리별 최근`(기존 section loop) → `04 태그` |
 | 색 전략 | 3차와 동일 — 3층 배경 + 텍스트 4단 투명도 + Electric Blue 포인트. 카테고리별 arbitrary 색 매핑 **금지** (editorial 절제 유지) |
-| 카테고리 시각 | 카테고리 이름의 **첫 글자**(`getCategoryLetter()`)를 Fraunces serif로 letter-mark 처리 + 공통 `--bg-subtle` 카드. 랭킹 배지 #1만 accent 색, #2·#3은 `--text-muted`. **이모지·이모티콘은 일체 사용하지 않음** (CLAUDE.md 전역 규칙: 사용자가 명시적으로 요청할 때만) |
+| 카테고리 시각 | `getCategoryLetter()` 가 마크를 정한다 — `CATEGORY_ICON` 에 매핑된 카테고리는 **이모지**, 없으면 이름 **첫 글자**를 Fraunces serif letter-mark 로. 카드 배경은 공통 `--bg-subtle`. 랭킹 배지 #1만 accent 색, #2·#3은 `--text-muted`. 이모지는 **카테고리 마크에서만** 쓴다 (사용자가 명시적으로 요청한 예외) |
 | 커버 이미지 | frontmatter `cover: ./images/foo.png` (optional, `./images/` 규칙은 본문과 동일). 없으면 `--bg-subtle`→`--bg-hover` 그라데이션 + 카테고리 letter-mark fallback |
 | 사이드바 아바타 | 정사각형 4px radius + Fraunces "J" letter-mark. 실제 이미지 없음 (의존성 0) |
 | 유지한 3차 자산 | Fraunces + Inter + Noto Serif KR 스택, CSS counter 번호, `--accent: #2b5bff`, 본문 17px/1.8, 다크 기본, shiki 듀얼 테마 |

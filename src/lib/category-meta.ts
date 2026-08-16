@@ -32,9 +32,21 @@ export function compareCategories(
   return b.count - a.count || a.name.localeCompare(b.name, 'ko')
 }
 
-// 카테고리 이름의 첫 글자 (하이픈/공백/언더스코어 제거 후)
-// 예: "개념-정리" → "개", "코테" → "코", "react" → "R"
+// 카테고리 마크에 쓰는 아이콘.
+// 이 저장소는 원래 UI에 이모지를 쓰지 않지만(docs/engine/design.md §1),
+// **카테고리 마크에 한해** 사용자가 명시적으로 요청해 허용한 예외다.
+// 여기 없는 카테고리는 아래 letter-mark로 자동 폴백된다.
+export const CATEGORY_ICON: Record<string, string> = {
+  '공부': '📚',
+  '프로젝트': '🛠️',
+  '기업-산업분석': '📈',
+}
+
+// 카테고리 마크 한 글자. 매핑된 아이콘이 있으면 그것, 없으면 이름의 첫 글자
+// (하이픈/공백/언더스코어 제거 후). 예: "트러블-슈팅" → "트", "react" → "R"
 export function getCategoryLetter(name: string) {
+  const icon = CATEGORY_ICON[name]
+  if (icon) return icon
   const cleaned = String(name || '').replace(/[-_\s]/g, '')
   const ch = cleaned.charAt(0)
   // 라틴 문자는 대문자화, 한글/기타 스크립트는 그대로
