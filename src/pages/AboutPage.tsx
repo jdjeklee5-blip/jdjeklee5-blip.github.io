@@ -8,7 +8,7 @@ export default function AboutPage() {
           <span className="about__avatar" aria-hidden="true">J</span>
           <div>
             <h1 className="about__name">jamin</h1>
-            <p className="about__bio">개발 기록과 생각을 남기는 공간</p>
+            <p className="about__bio">나의 소소한 기록들을 남기는 공간</p>
           </div>
         </header>
 

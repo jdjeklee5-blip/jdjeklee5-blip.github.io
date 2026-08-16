@@ -26,7 +26,7 @@ export default function Sidebar() {
           <span className="sidebar__avatar" aria-hidden="true">J</span>
           <span className="sidebar__brand-text">
             <span className="sidebar__title">jinaLog</span>
-            <span className="sidebar__tagline">개발 기록과 생각</span>
+            <span className="sidebar__tagline">나의 소소한 기록들</span>
           </span>
         </Link>
       </div>
