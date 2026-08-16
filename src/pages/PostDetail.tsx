@@ -64,6 +64,7 @@ export default function PostDetail() {
   const body = use(getPostBodyPromise(post.category, slug))
   const seriesNav = getSeriesNav(slug)
   const [lightbox, setLightbox] = useState<React.ReactNode | null>(null)
+  const coverUrl = post.cover ? resolveImageSrc(post.cover, post.category) : ''
 
   const components: Components = {
     img: ({ src, alt }) => {
@@ -134,6 +135,12 @@ export default function PostDetail() {
     <div className="page-post">
       <div className="post-layout">
         <article className="post">
+          {/* 표지 — cover가 있을 때만. 제목이 뒤따르므로 alt는 비운다 */}
+          {coverUrl && (
+            <div className="post__cover">
+              <img src={coverUrl} alt="" />
+            </div>
+          )}
           <header className="post__header">
             <p className="post__kicker">
               <Link to={`/categories/${encodeURIComponent(post.category)}`}>

@@ -1833,6 +1833,28 @@ body {
   }
 }
 
+/* 표지 — cover frontmatter 가 있는 글에만 붙는다. 없으면 제목부터 시작 */
+.post__cover {
+  margin-bottom: 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-hover);
+}
+
+.post__cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .post__cover img {
+    aspect-ratio: 2 / 1;
+  }
+}
+
 .post__header {
   margin-bottom: 3rem;
 }

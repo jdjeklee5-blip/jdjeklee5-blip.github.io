@@ -32,7 +32,7 @@ summary: HTTP의 기본 개념과 메서드, 상태 코드 정리
 | `date` | ✅ | `YYYY-MM-DD` | 정렬 기준. 최신순으로 나열된다 |
 | `tags` | ⬜ | `[a, b, c]` | 태그 필터 + **하위 카테고리 자동 분류의 입력** ([categories.md](categories.md)) |
 | `summary` | ⬜ | string | 목록 카드의 미리보기 한 줄 |
-| `cover` | ⬜ | `./images/<파일>` | 홈·카테고리 카드의 대표 이미지. 없으면 letter-mark fallback |
+| `cover` | ⬜ | `./images/<파일>` | 표지. 글 상세의 제목 위 배너 + 홈 카드 썸네일. 없으면 배너 생략, 카드는 letter-mark fallback |
 | `draft` | ⬜ | boolean | `true` 면 배포본에서 빠진다. 로컬 dev 에선 "초안" 배지와 함께 보인다 |
 | `private` | ⬜ | boolean | 목록·인덱스에서 숨긴다. 아래 주의 참조 |
 | `series` | ⬜ | string | 시리즈 이름 ([series.md](series.md)) |
