@@ -1,9 +1,8 @@
 import { useParams, Link } from 'react-router'
 import { getPostsBySeries, formatCategory } from '../lib/posts'
-import SEOHead from '../components/SEOHead'
 
 export default function SeriesDetailPage() {
-  const { name } = useParams()
+  const { name = '' } = useParams()
   const seriesName = decodeURIComponent(name)
   const posts = getPostsBySeries(seriesName)
 
@@ -21,11 +20,6 @@ export default function SeriesDetailPage() {
 
   return (
     <div className="page-series-detail">
-      <SEOHead
-        title={`${seriesName} 시리즈`}
-        description={`${seriesName} — ${posts.length}편, 약 ${totalTime}분`}
-        path={`/series/${encodeURIComponent(name)}`}
-      />
       <header className="series-detail__header">
         <Link to="/series" className="series-detail__back">
           ← 시리즈 목록

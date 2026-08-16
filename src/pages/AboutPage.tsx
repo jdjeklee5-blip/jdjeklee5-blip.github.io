@@ -1,13 +1,8 @@
 import { Link } from 'react-router'
-import SEOHead from '../components/SEOHead'
 
 export default function AboutPage() {
   return (
     <>
-      <SEOHead
-        title="About — jaminLog"
-        description="jaminLog 소개 및 연락처"
-      />
       <div className="page-about">
         <header className="about__header">
           <span className="about__avatar" aria-hidden="true">J</span>

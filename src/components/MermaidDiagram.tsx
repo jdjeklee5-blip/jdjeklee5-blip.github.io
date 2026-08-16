@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from 'react'
 //  4. 렌더 에러 시 원본 코드를 `<pre>`로 노출 (무음 실패 금지)
 // ─────────────────────────────────────────
 
-let mermaidInstance = null
+let mermaidInstance: typeof import('mermaid').default | null = null
 let initialized = false
 
 async function getMermaid() {
@@ -41,7 +41,7 @@ async function getMermaid() {
 
 export default function MermaidDiagram({ code, onClickExpand }: { code: string; onClickExpand?: (svgHtml: string) => void }) {
   const [svg, setSvg] = useState('')
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
   const idRef = useRef(
     `mermaid-${Math.random().toString(36).slice(2, 11)}`
   )
@@ -60,7 +60,7 @@ export default function MermaidDiagram({ code, onClickExpand }: { code: string; 
         }
       } catch (e) {
         if (alive) {
-          setError(e?.message || String(e))
+          setError(e instanceof Error ? e.message : String(e))
           setSvg('')
         }
       }

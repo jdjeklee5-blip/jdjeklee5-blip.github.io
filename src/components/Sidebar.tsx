@@ -22,10 +22,10 @@ export default function Sidebar() {
   return (
     <aside className="sidebar" aria-label="사이트 네비게이션">
       <div className="sidebar__header">
-        <Link to="/" className="sidebar__brand" aria-label="jaminLog 홈">
+        <Link to="/" className="sidebar__brand" aria-label="jinaLog 홈">
           <span className="sidebar__avatar" aria-hidden="true">J</span>
           <span className="sidebar__brand-text">
-            <span className="sidebar__title">jaminLog</span>
+            <span className="sidebar__title">jinaLog</span>
             <span className="sidebar__tagline">개발 기록과 생각</span>
           </span>
         </Link>
@@ -152,7 +152,7 @@ export default function Sidebar() {
 // `/categories/:cat[/:sub]` 에선 URL 파라미터에서,
 // `/posts/:slug` 에선 해당 글의 메타데이터에서,
 // 그 외 경로(`/`, `/tags/...`)에선 null
-function getActiveNav(pathname) {
+function getActiveNav(pathname: string) {
   const catMatch = pathname.match(/^\/categories\/([^/]+)(?:\/([^/]+))?/)
   if (catMatch) {
     try {
@@ -183,7 +183,7 @@ function getActiveNav(pathname) {
 }
 
 // 현재 보고 있는 글의 Post 객체 반환 (시리즈 판정용)
-function getActivePost(pathname) {
+function getActivePost(pathname: string) {
   const postMatch = pathname.match(/^\/posts\/([^/]+)/)
   if (!postMatch) return null
   try {

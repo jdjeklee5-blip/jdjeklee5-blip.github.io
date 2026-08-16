@@ -14,7 +14,7 @@ import { getSubcategoriesForCategory } from './subcategory-rules.js'
 
 // 카테고리 이름의 첫 글자 (하이픈/공백/언더스코어 제거 후)
 // 예: "개념-정리" → "개", "코테" → "코", "react" → "R"
-export function getCategoryLetter(name) {
+export function getCategoryLetter(name: string) {
   const cleaned = String(name || '').replace(/[-_\s]/g, '')
   const ch = cleaned.charAt(0)
   // 라틴 문자는 대문자화, 한글/기타 스크립트는 그대로
@@ -22,7 +22,7 @@ export function getCategoryLetter(name) {
 }
 
 // 포스트의 서브카테고리 라벨 반환. 없으면 null.
-export function getSubcategoryLabel(category, subcategory) {
+export function getSubcategoryLabel(category: string, subcategory: string) {
   if (!subcategory) return null
   const rule = getSubcategoriesForCategory(category)
     .find((r) => r.slug === subcategory)

@@ -18,10 +18,23 @@
 
 import { visit } from 'unist-util-visit'
 
+// hast 노드를 느슨하게 다룬다 — 이 플러그인은 pre>code.language-mermaid 패턴만 보고
+// 나머지 필드는 건드리지 않으므로 전체 hast 타입을 끌어올 이유가 없다.
+// unist-util-visit의 제네릭과 싸우지 않도록 콜백 안에서 이 타입으로 좁혀 쓴다.
+interface HastNode {
+  type?: string
+  tagName?: string
+  value?: string
+  properties?: Record<string, unknown>
+  children?: HastNode[]
+}
+
 export function rehypeMermaidPassthrough() {
-  return (tree) => {
-    visit(tree, 'element', (node, index, parent) => {
-      if (node.tagName !== 'pre' || index == null || !parent) return
+  return (tree: HastNode) => {
+    visit(tree as never, 'element', (rawNode, index, rawParent) => {
+      const node = rawNode as HastNode
+      const parent = rawParent as HastNode | undefined
+      if (node.tagName !== 'pre' || index == null || !parent?.children) return
       const codeChild = node.children?.find(
         (c) => c.type === 'element' && c.tagName === 'code'
       )
@@ -50,7 +63,7 @@ export function rehypeMermaidPassthrough() {
   }
 }
 
-function extractText(node) {
+function extractText(node: HastNode): string {
   if (!node) return ''
   if (node.type === 'text') return node.value || ''
   if (Array.isArray(node.children)) {

@@ -1,10 +1,10 @@
 import { Link } from 'react-router'
-import { formatCategory, getPostsBySeries } from '../lib/posts'
+import { formatCategory, getPostsBySeries, type Post } from '../lib/posts'
 
 // 재사용 가능한 글 목록 렌더러
 // props.posts: Post 배열
 // props.emptyMessage: 비었을 때 표시 텍스트
-export default function PostCards({ posts, emptyMessage = '아직 글이 없어요.' }) {
+export default function PostCards({ posts, emptyMessage = '아직 글이 없어요.' }: { posts: Post[]; emptyMessage?: string }) {
   if (!posts || posts.length === 0) {
     return <p className="empty">{emptyMessage}</p>
   }

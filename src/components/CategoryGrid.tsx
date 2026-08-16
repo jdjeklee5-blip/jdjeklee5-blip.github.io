@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { formatCategory, getSubcategoriesByCategory } from '../lib/posts'
+import { formatCategory, getSubcategoriesByCategory, type CategoryInfo } from '../lib/posts'
 import { getCategoryLetter } from '../lib/category-meta'
 
 const MAX_CHIPS = 4
@@ -7,7 +7,7 @@ const MAX_CHIPS = 4
 // 홈 `02 카테고리`: 카테고리를 카드 그리드로.
 // 글 수 상위 3개는 #1/#2/#3 랭킹 배지 (categories는 posts.js에서 이미 count 내림차순 정렬됨)
 // 카드 하단에 서브카테고리 칩 노출 (상위 MAX_CHIPS개, 나머지 +N)
-export default function CategoryGrid({ categories }) {
+export default function CategoryGrid({ categories }: { categories: CategoryInfo[] }) {
   if (!categories || categories.length === 0) return null
 
   return (

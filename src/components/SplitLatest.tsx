@@ -1,10 +1,10 @@
 import { Link } from 'react-router'
-import { resolveImageSrc, formatCategory } from '../lib/posts'
+import { resolveImageSrc, formatCategory, type Post } from '../lib/posts'
 import { getCategoryLetter, getSubcategoryLabel } from '../lib/category-meta'
 import HeroPost from './HeroPost'
 
 // 홈 `01 최신 글`: 최신 4개를 좌측 히어로 1 + 우측 compact 3으로 split
-export default function SplitLatest({ posts }) {
+export default function SplitLatest({ posts }: { posts: Post[] }) {
   if (!posts || posts.length === 0) return null
   const [hero, ...sides] = posts
 

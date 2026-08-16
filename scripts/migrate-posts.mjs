@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Jekyll _posts → jaminLog src/posts 마이그레이션
+ * Jekyll _posts → jinaLog src/posts 마이그레이션
  *
  * 동작:
  *  - 재귀 스캔: D:/project/personal/jamin12/_posts/**\/*.md
@@ -326,7 +326,7 @@ async function processFile(sourcePath, targetSlugs) {
 // 실행
 // ─────────────────────────────────────────
 async function main() {
-  console.log(`\n▶ Jekyll → jaminLog 마이그레이션 ${APPLY ? '(APPLY)' : '(DRY-RUN)'}`)
+  console.log(`\n▶ Jekyll → jinaLog 마이그레이션 ${APPLY ? '(APPLY)' : '(DRY-RUN)'}`)
   console.log(`   소스: ${SOURCE_POSTS}`)
   console.log(`   대상: ${TARGET_POSTS}\n`)
 

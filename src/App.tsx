@@ -39,7 +39,7 @@ export default function App() {
         <header className="app__topbar">
           <Link to="/" className="app__topbar-brand">
             <span className="app__topbar-avatar" aria-hidden="true">J</span>
-            <span>jaminLog</span>
+            <span>jinaLog</span>
           </Link>
         </header>
         <main className={`app__main ${isPostDetail ? 'app__main--post' : ''}`}>
@@ -67,7 +67,7 @@ export default function App() {
           </Routes>
         </main>
         <footer className="app__footer">
-          <p>© jaminLog · Built with React 19 + Vite</p>
+          <p>© jinaLog · Built with React 19 + Vite</p>
         </footer>
       </div>
     </div>

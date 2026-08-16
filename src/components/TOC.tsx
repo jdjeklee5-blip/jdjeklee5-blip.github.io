@@ -1,4 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type RefObject } from 'react'
+
+interface Heading {
+  id: string
+  text: string
+  level: 2 | 3
+}
+
+interface TOCProps {
+  containerRef: RefObject<HTMLElement | null>
+}
 
 // 본문 DOM에서 h2/h3를 추출해 목차를 렌더링한다.
 // rehype-slug가 id를 부여한 뒤 마운트되므로 렌더 이후 DOM에서 읽는다.
@@ -12,21 +22,21 @@ import { useEffect, useRef, useState } from 'react'
 // 그 기준선보다 **위에 있는 헤딩들 중 가장 마지막 것**(= 가장 가까운 것)을 active로.
 // 이유: 독자는 보통 화면 상단-중앙 영역의 제목 아래 문단을 읽고 있으므로,
 // "방금 지나친 제목"이 현재 섹션이라고 판단.
-export default function TOC({ containerRef }) {
-  const [headings, setHeadings] = useState([])
-  const [activeId, setActiveId] = useState(null)
-  const tocRef = useRef(null)
+export default function TOC({ containerRef }: TOCProps) {
+  const [headings, setHeadings] = useState<Heading[]>([])
+  const [activeId, setActiveId] = useState<string | null>(null)
+  const tocRef = useRef<HTMLElement>(null)
 
   // 1. 본문에서 h2/h3 수집
   useEffect(() => {
     if (!containerRef?.current) return
-    const els = containerRef.current.querySelectorAll('h2, h3')
+    const els = containerRef.current.querySelectorAll<HTMLElement>('h2, h3')
     setHeadings(
       Array.from(els)
         .filter((el) => el.id)
         .map((el) => ({
           id: el.id,
-          text: el.textContent,
+          text: el.textContent ?? '',
           level: el.tagName === 'H2' ? 2 : 3,
         }))
     )

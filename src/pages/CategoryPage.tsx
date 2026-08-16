@@ -4,12 +4,12 @@ import {
   getSubcategoriesByCategory,
   getUngroupedPostsByCategory,
   formatCategory,
+  type SubcategoryGroup,
 } from '../lib/posts'
 import PostCards from '../components/PostCards'
-import SEOHead from '../components/SEOHead'
 
 export default function CategoryPage() {
-  const { category, subcategory } = useParams()
+  const { category = '', subcategory } = useParams()
   const allPosts = getPostsByCategory(category)
   const label = formatCategory(category)
   const subs = getSubcategoriesByCategory(category)
@@ -25,11 +25,6 @@ export default function CategoryPage() {
   if (activeSub && activeSubDef) {
     return (
       <div className="page-list">
-        <SEOHead
-          title={`${label} — ${activeSubDef.label}`}
-          description={`${label} · ${activeSubDef.label} 하위 카테고리의 글 모음 (${activeSubDef.count}개)`}
-          path={`/categories/${encodeURIComponent(category)}/${activeSub}`}
-        />
         <header className="page-header">
           <p className="page-header__kicker">
             <Link to={`/categories/${encodeURIComponent(category)}`}>
@@ -64,11 +59,6 @@ export default function CategoryPage() {
   // 하위 그룹이 정의돼 있으면 그룹별 섹션으로 렌더, 아니면 flat 목록
   return (
     <div className="page-list">
-      <SEOHead
-        title={activeSub ? `${label} — ${activeSubDef?.label}` : label}
-        description={`${label} 카테고리의 글 모음 (${allPosts.length}개)`}
-        path={activeSub ? `/categories/${encodeURIComponent(category)}/${activeSub}` : `/categories/${encodeURIComponent(category)}`}
-      />
       <header className="page-header">
         <p className="page-header__kicker">카테고리</p>
         <h1 className="page-header__title">{label}</h1>
@@ -129,7 +119,15 @@ export default function CategoryPage() {
 }
 
 // 카테고리 상단의 하위 그룹 칩 네비
-function SubcategoryNav({ category, subs, active }) {
+function SubcategoryNav({
+  category,
+  subs,
+  active,
+}: {
+  category: string
+  subs: SubcategoryGroup[]
+  active: string | null
+}) {
   return (
     <nav className="subcategory-nav" aria-label="하위 카테고리">
       <NavLink

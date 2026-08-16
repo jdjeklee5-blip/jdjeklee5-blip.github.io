@@ -1,12 +1,10 @@
 import { Link } from 'react-router'
 import { privatePosts, formatCategory } from '../lib/posts'
 import PostCards from '../components/PostCards'
-import SEOHead from '../components/SEOHead'
 
 export default function PrivateListPage() {
   return (
     <div className="page-home">
-      <SEOHead title="비밀글" />
       <section className="home-section">
         <header className="home-section__header">
           <h2 className="home-section__title">비밀글</h2>

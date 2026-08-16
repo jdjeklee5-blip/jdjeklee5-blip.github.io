@@ -1,6 +1,6 @@
 import { use, useRef, useState } from 'react'
 import { useParams, Link } from 'react-router'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown, { type Components, type Options } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeSlug from 'rehype-slug'
@@ -21,10 +21,9 @@ import { rehypeMermaidPassthrough } from '../lib/rehype-mermaid-passthrough'
 import TOC from '../components/TOC'
 import MermaidDiagram from '../components/MermaidDiagram'
 import Lightbox from '../components/Lightbox'
-import SEOHead from '../components/SEOHead'
 
-const remarkPlugins = [remarkGfm, remarkMath]
-const rehypePlugins = [
+const remarkPlugins: Options['remarkPlugins'] = [remarkGfm, remarkMath]
+const rehypePlugins: Options['rehypePlugins'] = [
   rehypeSlug,
   [
     rehypeAutolinkHeadings,
@@ -47,7 +46,7 @@ const rehypePlugins = [
 ]
 
 export default function PostDetail() {
-  const { slug } = useParams()
+  const { slug = '' } = useParams()
   const post = getPostBySlug(slug)
   const bodyRef = useRef(null)
 
@@ -66,7 +65,7 @@ export default function PostDetail() {
   const seriesNav = getSeriesNav(slug)
   const [lightbox, setLightbox] = useState<React.ReactNode | null>(null)
 
-  const components = {
+  const components: Components = {
     img: ({ src, alt }) => {
       const resolved = resolveImageSrc(src, post.category)
       return (
@@ -104,10 +103,11 @@ export default function PostDetail() {
           ? className.split(/\s+/)
           : []
       if (classList.includes('mermaid-block')) {
-        const code =
-          node?.properties?.dataMermaidCode ||
-          rest['data-mermaid-code'] ||
-          ''
+        const code = String(
+          node?.properties?.dataMermaidCode ??
+            (rest as Record<string, unknown>)['data-mermaid-code'] ??
+            ''
+        )
         return (
           <MermaidDiagram
             code={code}
@@ -132,14 +132,6 @@ export default function PostDetail() {
 
   return (
     <div className="page-post">
-      <SEOHead
-        title={post.title}
-        description={post.summary || `${post.title} — ${formatCategory(post.category)}`}
-        path={`/posts/${slug}`}
-        type="article"
-        publishedTime={post.date}
-        tags={post.tags}
-      />
       <div className="post-layout">
         <article className="post">
           <header className="post__header">
