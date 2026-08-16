@@ -10,6 +10,7 @@
 import metaJson from './posts-meta.json'
 import { parseFrontmatter } from './parse-frontmatter.js'
 import { getSubcategoriesForCategory } from './subcategory-rules.js'
+import { compareCategories } from './category-meta'
 
 // ── 타입 정의 ──
 
@@ -99,7 +100,7 @@ export const categories: CategoryInfo[] = [...new Set(publicPosts.map((p) => p.c
     name,
     count: publicPosts.filter((p) => p.category === name).length,
   }))
-  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, 'ko'))
+  .sort(compareCategories)
 
 // ── 태그 인덱스 ──
 const tagMap = new Map<string, number>()

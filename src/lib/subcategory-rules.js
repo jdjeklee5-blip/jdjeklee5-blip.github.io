@@ -2,15 +2,19 @@
 // 하위 카테고리 (subcategory) 규칙
 //
 // 설계 맥락 (docs/specs/content.md §8 옵션 D의 보완):
-// - Jekyll 이관 시 옵션 D("상위만 카테고리, 하위는 태그")로 물리 구조를 평탄화했으나,
-//   그 결과 "개념-정리" 41글이 한 덩어리로 보여 탐색성이 0에 가까웠음
-// - 파일/URL을 건드리지 않고 **기존 태그를 재활용**해 UI 레벨에서 하위 그룹을 복원
-// - 각 카테고리별로 ordered rule 배열. 더 구체적인 규칙이 앞에 와야 함
-//   (예: argo-rollouts는 kubernetes보다 우선 → deployment 서브로 빠짐)
+// - 물리 구조는 "상위만 폴더, 하위는 태그"로 평탄하다. 폴더를 더 파지 않고
+//   **태그를 재활용**해 UI 레벨에서만 하위 그룹을 만든다
+// - 카테고리별 ordered rule 배열. 글의 tags를 위에서부터 대조해 **첫 매치**로 분류
+// - 그래서 **더 구체적인 규칙이 앞에** 와야 한다. 넓은 태그(언어명 등)는 뒤로
 //
-// 정확도: 2026-04-05 posts-meta.json 전수 검증 기준 68/68
+// 규칙을 중간에 끼워넣거나 순서를 바꾸면 기존 글이 조용히 다른 그룹으로 옮겨간다.
+// 에러가 나지 않으므로 바꾼 뒤에는 posts-meta.json의 subcategory를 전수 확인할 것
 //
-// 새 카테고리/주제가 추가되면 이 파일만 수정. 전역 변수는 없음
+// 매칭되는 글이 0개인 규칙은 UI에서 자동으로 빠지므로(posts.ts의
+// getSubcategoriesByCategory), 앞으로 쓸 주제를 미리 선언해둬도 빈 그룹은 보이지 않는다
+//
+// 이전 카테고리(`개념-정리`·`코테`·`트러블-슈팅`)의 규칙 27개는 그 글들이 저장소에서
+// 빠지면서 함께 제거했다. 옛 글을 되살릴 일이 생기면 git 히스토리에서 가져온다
 // ─────────────────────────────────────────
 
 /**
@@ -19,40 +23,31 @@
 
 /** @type {Record<string, SubcategoryRule[]>} */
 export const SUBCATEGORY_RULES = {
-  '개념-정리': [
-    { slug: 'network',       label: '네트워크',       tags: ['network'] },
-    { slug: 'elasticsearch', label: 'Elasticsearch',  tags: ['elasticsearch'] },
-    { slug: 'deployment',    label: '배포 전략',       tags: ['canary', 'blue-green', 'argo-rollouts'] },
-    { slug: 'cdc',           label: 'Pact · CDC',     tags: ['pact', 'cdc'] },
-    // spring 규칙은 java 태그를 포함하지 않음 — jackson-polymorphic이 java 태그를 가지지만
-    // 내용은 Jackson 관련이라 spring으로 묶이면 안 됨
-    { slug: 'spring',        label: 'Spring',         tags: ['spring', 'spring-boot', 'event', 'listener', 'valid', 'validated'] },
-    { slug: 'nextjs',        label: 'Next.js',        tags: ['Next.js', 'nextJs'] },
-    { slug: 'jackson',       label: 'Jackson',        tags: ['jackson'] },
-    // redis 규칙은 streams 태그만 잡음 — jackson-polymorphic이 redis 태그도 가지기 때문
-    { slug: 'redis',         label: 'Redis Streams',  tags: ['streams'] },
-    { slug: 'monitoring',    label: '모니터링',        tags: ['monitoring'] },
-    { slug: 'ci',            label: 'CI/CD',           tags: ['CI'] },
-    { slug: 'cs',            label: 'CS 기초',         tags: ['cs'] },
-    { slug: 'database',      label: '데이터베이스',    tags: ['databases'] },
-    // kubernetes는 맨 마지막. argo-rollouts(kubernetes 태그도 포함)가 먼저 deployment로 빠진 뒤,
-    // 순수 k8s 스토리지/권한 관련 글(Pv-pvc, storageClass 등)만 여기로 떨어짐
-    { slug: 'kubernetes',    label: 'Kubernetes',     tags: ['k8s', 'kubernetes'] },
-    { slug: 'circuit-breaker', label: '서킷브레이커', tags: ['circuit-breaker'] },
-    { slug: 'saga',            label: 'Saga · Outbox',  tags: ['saga', 'outbox'] },
-    { slug: 'coroutine',       label: 'Coroutine',      tags: ['coroutine'] },
-    { slug: 'spring-reactive', label: 'Spring Reactive', tags: ['spring-reactive', 'reactive'] },
+  // SCM 은 Supply Chain Management. 형상관리(Source Control)가 아니다 —
+  // `git` 태그를 여기에 넣지 말 것
+  '공부': [
+    { slug: 'scm',        label: 'SCM',        tags: ['scm', 'supply-chain', '공급망'] },
+    { slug: 'logistics',  label: '유통·물류',   tags: ['물류', '유통', 'logistics', 'distribution'] },
+    { slug: 'erp',        label: 'ERP',        tags: ['erp', 'sap'] },
+    // 넓은 태그(data)가 있어 맨 뒤. 위 그룹에 먼저 걸린 글은 여기로 오지 않는다
+    { slug: 'sql-data',   label: 'SQL / Data', tags: ['sql', 'data', 'database', 'databases'] },
   ],
 
-  '코테': [
-    { slug: 'dp',     label: 'DP',           tags: ['dp'] },
-    { slug: 'graph',  label: '그래프 · BFS', tags: ['graph', 'bfs'] },
-    { slug: 'string', label: '문자열',       tags: ['string'] },
-    { slug: 'math',   label: '수학',         tags: ['math'] },
+  // 프로젝트는 "무슨 주제냐"가 아니라 "어느 프로젝트냐"로 갈린다.
+  // 주제 목록으로 미리 채우지 않고, 프로젝트가 하나 생길 때마다 한 줄 추가한다.
+  // 글에는 프로젝트 식별 태그 하나(예: `toodak`)를 일관되게 붙인다.
+  //
+  // 한 프로젝트 안에서 글이 순서대로 이어지면(소개 → 설계 → 회고)
+  // 하위 그룹이 아니라 series 를 쓴다 — 이전/다음 편 네비와 목차가 자동으로 붙는다.
+  // docs/writing/series.md
+  '프로젝트': [
+    { slug: 'toodak', label: 'Toodak', tags: ['toodak'] },
+    { slug: 'scm',    label: 'SCM',    tags: ['scm'] },
   ],
 
-  // 4글 뿐이라 하위 그룹 없이 flat 유지 (자연스럽게 묶이는 주제도 없음)
-  '트러블-슈팅': [],
+  '기업-산업분석': [
+    { slug: 'beauty', label: 'Beauty', tags: ['뷰티', 'beauty', '화장품'] },
+  ],
 }
 
 // 카테고리 + 태그 배열 → 매칭되는 첫 rule (없으면 null)

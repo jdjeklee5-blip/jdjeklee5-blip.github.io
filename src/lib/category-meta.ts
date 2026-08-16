@@ -12,6 +12,26 @@
 
 import { getSubcategoriesForCategory } from './subcategory-rules.js'
 
+// 카테고리 표시 순서. 사이드바·홈 그리드·"카테고리별 최근" 이 전부 이 순서를 따른다.
+// 글 수로 정렬하면 글이 쌓일 때마다 순서가 뒤집혀서 탐색 위치가 흔들리므로 고정한다.
+// 여기 없는 카테고리는 뒤에 글 수 내림차순으로 붙는다.
+export const CATEGORY_ORDER = ['공부', '프로젝트', '기업-산업분석']
+
+// categories 정렬 비교자 — 고정 순서 우선, 나머지는 글 수 내림차순 → 이름순
+export function compareCategories(
+  a: { name: string; count: number },
+  b: { name: string; count: number }
+) {
+  const ia = CATEGORY_ORDER.indexOf(a.name)
+  const ib = CATEGORY_ORDER.indexOf(b.name)
+  if (ia !== -1 || ib !== -1) {
+    if (ia === -1) return 1
+    if (ib === -1) return -1
+    return ia - ib
+  }
+  return b.count - a.count || a.name.localeCompare(b.name, 'ko')
+}
+
 // 카테고리 이름의 첫 글자 (하이픈/공백/언더스코어 제거 후)
 // 예: "개념-정리" → "개", "코테" → "코", "react" → "R"
 export function getCategoryLetter(name: string) {

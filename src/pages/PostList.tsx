@@ -1,5 +1,6 @@
 import { Link } from 'react-router'
 import { publicPosts, categories, tags, formatCategory } from '../lib/posts'
+import { compareCategories } from '../lib/category-meta'
 import PostCards from '../components/PostCards'
 import LatestGrid from '../components/LatestGrid'
 import SeriesStrip from '../components/SeriesStrip'
@@ -22,7 +23,7 @@ function buildCategoryGroups() {
       count: list.length,
       latestDate: list[0]?.date || '',
     }))
-    .sort((a, b) => (a.latestDate < b.latestDate ? 1 : -1))
+    .sort(compareCategories)
 }
 
 export default function PostList() {
