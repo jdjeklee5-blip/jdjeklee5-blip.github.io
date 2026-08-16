@@ -36,6 +36,10 @@
   --accent-fg: #ffffff;
   --accent-tint: rgba(43, 91, 255, 0.08);
 
+  /* 마크 포인트 — 아바타·레터마크·아이콘·섹션 번호 전용 (텍스트엔 쓰지 않는다) */
+  --mark: #d81b60;
+  --mark-tint: rgba(216, 27, 96, 0.08);
+
   /* 타이포 스택 */
   --font-sans: 'Inter', 'Pretendard Variable', Pretendard, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', Roboto, Helvetica, Arial,
@@ -198,8 +202,8 @@ body {
   font-optical-sizing: auto;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-tint);
+  color: var(--mark);
+  background: var(--mark-tint);
   border: 1px solid var(--border);
   border-radius: 12px;
   letter-spacing: -0.02em;
@@ -208,7 +212,7 @@ body {
 
 .sidebar__brand:hover .sidebar__avatar {
   transform: rotate(-4deg);
-  border-color: var(--accent);
+  border-color: var(--mark);
 }
 
 .sidebar__brand-text {
@@ -321,9 +325,9 @@ body {
 }
 
 .sidebar__nav-item--active .sidebar__nav-mark {
-  color: var(--accent);
-  background: var(--accent-tint);
-  border-color: var(--accent);
+  color: var(--mark);
+  background: var(--mark-tint);
+  border-color: var(--mark);
 }
 
 .sidebar__nav-name {
@@ -520,8 +524,8 @@ body {
   height: 30px;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-tint);
+  color: var(--mark);
+  background: var(--mark-tint);
   border: 1px solid var(--border);
   border-radius: 8px;
   letter-spacing: -0.02em;
@@ -568,8 +572,8 @@ body {
   font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-tint);
+  color: var(--mark);
+  background: var(--mark-tint);
   border: 1px solid var(--border);
   border-radius: 14px;
   flex-shrink: 0;
@@ -629,12 +633,8 @@ body {
 }
 
 .about__channel-icon {
-  color: var(--text-muted);
+  color: var(--mark);
   flex-shrink: 0;
-}
-
-.about__channel:hover .about__channel-icon {
-  color: var(--accent);
 }
 
 .about__channel div {
@@ -679,7 +679,7 @@ body {
 
 .about__channel:hover .about__channel-arrow {
   transform: translateX(2px);
-  color: var(--accent);
+  color: var(--mark);
 }
 
 .about__back {
@@ -747,7 +747,7 @@ body {
   content: counter(home-counter, decimal-leading-zero);
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--accent);
+  color: var(--mark);
   font-weight: 500;
   letter-spacing: 0.14em;
   align-self: center;
@@ -821,7 +821,7 @@ body {
 .hero-post__media--fallback {
   background-image: radial-gradient(
       circle at 30% 20%,
-      var(--accent-tint) 0%,
+      var(--mark-tint) 0%,
       transparent 55%
     ),
     linear-gradient(135deg, var(--bg-subtle) 0%, var(--bg-hover) 100%);
@@ -847,7 +847,7 @@ body {
   font-optical-sizing: auto;
   font-size: 7rem;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--mark);
   opacity: 0.32;
   letter-spacing: -0.05em;
   line-height: 1;
@@ -1027,7 +1027,7 @@ body {
 .side-post__media--fallback {
   background-image: radial-gradient(
       circle at 30% 30%,
-      var(--accent-tint) 0%,
+      var(--mark-tint) 0%,
       transparent 60%
     ),
     linear-gradient(135deg, var(--bg-hover) 0%, var(--bg-elevated) 100%);
@@ -1038,7 +1038,7 @@ body {
   font-optical-sizing: auto;
   font-size: 2rem;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--mark);
   opacity: 0.55;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -1105,7 +1105,7 @@ body {
   font-optical-sizing: auto;
   font-size: 2.5rem;
   font-weight: 500;
-  color: var(--accent);
+  color: var(--mark);
   opacity: 0.25;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -1267,8 +1267,8 @@ body {
   font-optical-sizing: auto;
   font-size: 1.65rem;
   font-weight: 500;
-  color: var(--accent);
-  background: var(--accent-tint);
+  color: var(--mark);
+  background: var(--mark-tint);
   border: 1px solid var(--border);
   border-radius: 12px;
   letter-spacing: -0.02em;
@@ -1278,7 +1278,7 @@ body {
 }
 
 .category-card:hover .category-card__mark {
-  border-color: var(--accent);
+  border-color: var(--mark);
   transform: rotate(-3deg) scale(1.03);
 }
 
@@ -2470,7 +2470,7 @@ body {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--mark);
   opacity: 0.5;
 }
 
@@ -2692,14 +2692,14 @@ body {
   height: 11px;
   border-radius: 50%;
   background: var(--bg);
-  border: 2px solid var(--accent);
+  border: 2px solid var(--mark);
   margin-top: 4px;
   position: relative;
   z-index: 1;
 }
 
 .series-timeline__item:hover .series-timeline__node {
-  background: var(--accent);
+  background: var(--mark);
 }
 
 .series-timeline__content {
