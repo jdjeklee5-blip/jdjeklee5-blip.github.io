@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { publicPosts, categories, tags, formatCategory } from '../lib/posts'
+import { publicPosts, categories, tags, seriesList, formatCategory } from '../lib/posts'
 import { compareCategories } from '../lib/category-meta'
 import PostCards from '../components/PostCards'
 import LatestGrid from '../components/LatestGrid'
@@ -43,16 +43,18 @@ export default function PostList() {
         <LatestGrid posts={latest} />
       </section>
 
-      {/* 02 시리즈 */}
-      <section className="home-section">
-        <header className="home-section__header">
-          <h2 className="home-section__title">시리즈</h2>
-          <p className="home-section__subtitle">
-            순서대로 이어지는 글 묶음
-          </p>
-        </header>
-        <SeriesStrip />
-      </section>
+      {/* 02 시리즈 — 시리즈로 묶인 글이 하나도 없으면 섹션째 감춘다 */}
+      {seriesList.length > 0 && (
+        <section className="home-section">
+          <header className="home-section__header">
+            <h2 className="home-section__title">시리즈</h2>
+            <p className="home-section__subtitle">
+              순서대로 이어지는 글 묶음
+            </p>
+          </header>
+          <SeriesStrip />
+        </section>
+      )}
 
       {/* 03 카테고리별 최근 글 */}
       {groups.length > 0 && (
